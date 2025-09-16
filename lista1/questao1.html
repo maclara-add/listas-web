@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- QUESTÃO 1-->
+<head>   
+   <title>Exemplo especificidade de seletores</title>
+   <style>
+      /*regra 1*/ li{color:red;}
+      /*regra 2*/ .churras{color:green;}
+      /*regra 3*/ .fruta{color:gray}
+      /*regra 4*/ li+li.churras{color: black;}
+      /*regra 5*/ .churras[draggable="true"]{color: magenta;}
+      /*regra 6*/ #lip1,#lip2,#lip3{color:blue}
+      /*regra 7*/ #lip3.fruta{color:orange}
+      /*regra 8*/ ol>li.churras#lip5{color:purple}
+   </style>
+</head>
+<body>   
+   <ol>
+   <!--item 1--> <li id="lip0">Abacaxi</li>  <!-- Regra 1: Aplica vermelho. Todos os <li> ficam vermelhos. Nenhuma outra regra se aplica -->
+
+   <!--item 2--> <li class="fruta">Melão</li> <!-- Regra 1 aplica vermelho, regra 3 (classe fruta) aplica cinza, mais específico que a regra 1, então o cinza 
+   se sobressai -->
+
+   <!--item 3--> <li id="lip2" class="fruta">Pera</li> <!-- Regra 1 (<li>) aplica vermelho, Regra 3 (classe fruta)
+    aplicaria cinza, mas regra 6 (id lip2) = azul, cor azul se sobressai -->
+
+   <!--item 4--> <li id="lip3" class="fruta">Uva</li> <!-- Regra 7 é a final, (id lip 3 + classe fruta), cor laranja final -->
+
+   <!--item 5--> <li id="lip4" class="fruta">Maçã</li> <!-- Regra 3, apesar do id, não há nenhuma regra especifíca pra ele -->
+
+   <!--item 6--> <li           class="churras">Carne</li> <!-- Regra 2 aplica (classe churras) verde, Regra 4 não aplica pois
+   não está imediatamente atrás outro (li.churras) -->
+
+   <!--item 7--> <li           class="churras">Linguiça</li> <!-- Regra 4 aplica este <li class="churras"> vem logo depois de outro <li> -->
+
+   <!--item 8--> <li id="lip7" class="churras" draggable="true">Pão de alho</li> <!-- Regra 5, graças ao draggable= "true"-->
+   </ol>   
+</body>
+</html>

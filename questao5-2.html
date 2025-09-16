@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barquinho</title>
+    <style>
+        /* Configuração geral da página */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to top, #87cefa, #add8e6);
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Mar animado */
+        .mar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            background: #1e3a5f;
+            z-index: 1;
+        }
+
+        .mar::before,
+        .mar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: onda 3s linear infinite;
+        }
+
+        .mar::after {
+            background-size: 70px 70px;
+            animation-duration: 4s;
+        }
+
+        @keyframes onda {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Nuvem animada */
+        .nuvem {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 120px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: -50px 20px 20px rgba(255, 255, 255, 0.5), 50px 20px 20px rgba(255, 255, 255, 0.5);
+            animation: moverNuvem 10s linear infinite;
+            z-index: 2;
+        }
+
+        /* Movimentação suave da nuvem */
+        @keyframes moverNuvem {
+            0% {
+                left: -300px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Barquinho com imagem */
+        .barquinho {
+            position: absolute;
+            bottom: 12%; /* Ajusta a posição do barco para estar na parte inferior */
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza horizontalmente */
+            z-index: 3;
+        }
+
+        .barquinho img {
+            width: 120px; /* Ajuste o tamanho da imagem conforme necessário */
+            animation: balanco 2s ease-in-out infinite;
+        }
+
+        /* Animação de balanço do barquinho */
+        @keyframes balanco {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            50% {
+                transform: translateX(-50%) rotate(8deg);
+            }
+            100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Mar -->
+    <div class="mar"></div>
+
+    <!-- Nuvem -->
+    <div class="nuvem"></div>
+
+    <!-- Barquinho (imagem) -->
+    <div class="barquinho">
+        <img src="lista1/barco.webp" alt="Barquinho">
+    </div>
+
+</body>
+</html>

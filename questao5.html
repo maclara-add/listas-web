@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subindo no Cosmos</title>
+    <style>
+        /* Definições do corpo da página */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #080b33, #1f497d);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+        }
+
+        /* Efeito de estrelas no fundo */
+        .universo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+        }
+
+        .universo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: estrelaMovimento 100s linear infinite;
+        }
+
+        .universo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 90px 90px;
+            animation: estrelaMovimento 120s linear infinite;
+        }
+
+        @keyframes estrelaMovimento {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Contêiner do foguete */
+        .rocket {
+            position: absolute;
+            bottom: -200px;
+            width: 120px;
+            height: 350px;
+            z-index: 3;
+            animation: fogueteSubindo 18s ease-in-out infinite;
+        }
+
+        @keyframes fogueteSubindo {
+            0% {
+                bottom: -200px;
+            }
+
+            50% {
+                bottom: 90vh;
+            }
+
+            100% {
+                bottom: 110vh;
+            }
+        }
+
+        .rocket::before,
+        .rocket::after {
+            content: '';
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: 2;
+        }
+
+        .rocket::before {
+            width: 90px;
+            height: 130px;
+            background: rgb(255, 102, 0);
+            animation: chamaFogo 0.7s linear infinite;
+        }
+
+        .rocket::after {
+            width: 110px;
+            height: 170px;
+            background: rgba(255, 255, 255, 0.3);
+            animation: nuvemFumaça 2s ease-out infinite;
+        }
+
+        @keyframes chamaFogo {
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1.3, 0.7);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1, 1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes nuvemFumaça {
+            0% {
+                transform: translateX(-50%) translateY(0) scale(0.4);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(250px) scale(1.7);
+                opacity: 0;
+            }
+        }
+
+        /* Definição do ícone do foguete */
+        .rocket-icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Foguete no formato SVG */
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="universo"></div>
+
+    <div class="rocket">
+        <svg class="rocket-icon" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="60" width="40" height="150" rx="12" ry="12" fill="#E4E4E4" stroke="black" stroke-width="2" />
+            <circle cx="50" cy="90" r="17" fill="#A8C7E7" stroke="black" stroke-width="1" />
+            <polygon points="30,60 70,60 50,5" fill="#FF5722" stroke="black" stroke-width="2" />
+            <polygon points="30,130 0,170 30,220" fill="#FF5722" stroke="black" stroke-width="2" />
+            <polygon points="70,130 100,170 70,220" fill="#FF5722" stroke="black" stroke-width="2" />
+        </svg>
+    </div>
+
+</body>
+
+</html>
